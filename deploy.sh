@@ -20,6 +20,7 @@ if [ "$1" == "--force" -o "$1" == "-f" ]; then
 else
 	echo "";
 	read -p "I'm about to change the configuration files placed in your home directory. Do you want to continue? (y/n) " -n 1;
+	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		rsyncFiles;
 	fi;
