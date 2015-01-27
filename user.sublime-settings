@@ -1,0 +1,18 @@
+{
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"create_window_at_startup": false,
+	"draw_minimap_border": true,
+	"find_selected_text": false,
+	"highlight_modified_tabs": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"open_files_in_new_window": false,
+	"remember_full_screen": true,
+	"save_on_focus_lost": true,
+	"show_encoding": true,
+	"theme": "Soda Dark 3.sublime-theme",
+	"word_wrap": true
+}

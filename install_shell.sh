@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# install_shell.sh — Shell software installation script
+# Created by odarriba (https://github.com/odarriba/dotfiles)
+
 cd "$(dirname "${BASH_SOURCE}")";
 
 echo "Shell installation script for odarriba's dotfiles";
