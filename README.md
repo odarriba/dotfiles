@@ -7,6 +7,11 @@ It includes configuration of *zsh*, *oh-my-zsh*, *antigen* and *powerline*. Also
 ### usage
 In order to use this dotfiles, there is several scripts to make your (and mine) life easier.
 
+#### OSX tweak script
+To clone my OSX configuration (UI/UX, Finder, Dock, Terminal, iTerm, Sublime Text, etc), you can use a script called `osx.sh` that is inspired in the one available in another dotfile repository (https://github.com/mathiasbynens/dotfiles), but with some enhancements and my personal configuration.
+
+Please, read the changes that the script are going to do in order to avoid unwanted changes in your system!
+
 #### installation of required software
 To install the required software, there is a script called `install_shell.sh` that execute the commands required in order to obtain a base system compatible with the dotfiles of this repo.
 
