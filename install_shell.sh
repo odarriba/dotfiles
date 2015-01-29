@@ -38,7 +38,7 @@ installSoftware() {
 	if [[ $platform == 'linux' ]]; then
 		sudo apt-get install -y zsh git-core curl wget python-pip
 	elif [[ $platform == 'darwin' ]]; then
-		brew install zsh git curl wget python
+		brew install zsh git curl wget python vim
 	fi
 
 	# Change the shell to zsh
@@ -55,8 +55,20 @@ installSoftware() {
 	git clone https://github.com/zsh-users/antigen ~/.antigen
 
 	# Install powerline
-	echo "[INFO] Installing Powerline...";
-	sudo pip install powerline-status
+	# echo "[INFO] Installing Powerline...";
+	# sudo pip install powerline-status
+
+	# Install airline
+	echo "[INFO] Installing Airline (with promptline)...";
+	mkdir -p ~/.vim/autoload ~/.vim/bundle
+	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+	git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
+	git clone https://github.com/edkolev/promptline.vim ~/.vim/bundle/vim-promptline
+
+	# Generating the shell_prompt.sh (first copy the .vimrc)
+	cp .vimrc ~/
+	vim +Helptags +q
+ 	vim +"PromptlineSnapshot ~/.shell_prompt.sh powerlineclone" +q
 }
 
 installBrew() {

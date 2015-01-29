@@ -43,10 +43,4 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-powerline-daemon -q
-
-if [ -f "/usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh" ]; then
-	source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh;
-elif [ -f "/usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh" ]; then
-	source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh;
-fi
+source ~/.shell_prompt.sh
