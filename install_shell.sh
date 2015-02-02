@@ -43,7 +43,10 @@ installSoftware() {
 
 	# Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
-	chsh -s `which zsh`
+	if [[ $platform == 'darwin' ]]; then # OSX hack
+		echo $(which zsh) | sudo tee -a /etc/shells
+	fi
+	chsh -s $(which zsh)
 
 	# Install Oh My Zsh!
 	echo "[INFO] Installing Oh My Zsh...";
