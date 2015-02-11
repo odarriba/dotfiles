@@ -1,0 +1,2 @@
+alias router='ssh -f hal -L 2020:192.168.0.1:80 -N && open http://localhost:2020'
+alias unrouter='pkill ssh -f hal -L 2020:192.168.0.1:80 -N'
