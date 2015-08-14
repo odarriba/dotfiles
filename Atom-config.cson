@@ -1,0 +1,17 @@
+"*":
+  "exception-reporting":
+    userId: "d41cf546-c26e-e2be-9721-348fd906f309"
+  welcome:
+    showOnStartup: false
+  core:
+    themes: [
+      "seti-ui"
+      "monokai-seti"
+    ]
+    destroyEmptyPanes: false
+  editor:
+    invisibles: {}
+    scrollPastEnd: true
+    softWrap: true
+  autosave:
+    enabled: true

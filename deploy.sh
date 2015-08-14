@@ -13,8 +13,8 @@ git pull origin master;
 
 rsyncFiles() {
 	echo "[INFO] Syncing configuration...";
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "deploy.sh" --exclude "install_shell.sh" \
-		--exclude "user.sublime-settings" --exclude "osx_config.sh" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "deploy.sh" --exclude "install_shell.sh" --exclude "Monaco for Powerline.otf" \
+		--exclude "user.sublime-settings" --exclude "Atom-config.cson" --exclude "osx_config.sh" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 }
 
 
