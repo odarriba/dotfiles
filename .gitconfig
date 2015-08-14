@@ -1,0 +1,11 @@
+[user]
+	name = Óscar de Arriba
+	email = oscar.dearriba@the-cocktail.com
+[merge]
+	ff = false
+[branch]
+	autosetuprebase = always
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/odarriba/.gitignore_global
