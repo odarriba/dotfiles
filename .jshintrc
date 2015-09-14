@@ -1,0 +1,18 @@
+{
+  "browser"  : true,
+  "jquery"   : true,
+  "devel"    : true,
+  "curly"    : true,
+  "latedef"  : true,
+  "maxdepth" : 3,
+  "newcap"   : true,
+  "noarg"    : true,
+  "noempty"  : true,
+  "trailing" : true,
+  "undef"    : true,
+  "unused"   : true,
+  "sub"      : true,
+  "predef": [
+	"variables globales o plugins",
+  ]
+}
