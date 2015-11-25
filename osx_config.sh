@@ -22,10 +22,10 @@ doMagic() {
 	echo "[INFO] Changing general UI/UX settings...";
 
 	# Set computer name (as done via System Preferences → Sharing)
-	sudo scutil --set ComputerName "Enigma"
-	sudo scutil --set HostName "Enigma"
-	sudo scutil --set LocalHostName "Enigma"
-	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Enigma"
+	sudo scutil --set ComputerName "Skynet"
+	sudo scutil --set HostName "skynet"
+	sudo scutil --set LocalHostName "skynet"
+	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Skynet"
 
 	# Disable the sound effects on boot
 	sudo nvram SystemAudioVolume=" "
