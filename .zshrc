@@ -48,6 +48,9 @@ source ~/.aliases
 
 export PATH="/usr/local/sbin:$PATH"
 
+# Install cask applications to /Applications
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Launchy
 LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
 if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
