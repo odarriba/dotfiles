@@ -13,6 +13,5 @@
   "unused"   : true,
   "sub"      : true,
   "predef": [
-	"variables globales o plugins",
   ]
 }
