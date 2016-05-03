@@ -26,6 +26,12 @@ This installation process is required in order to use the dotfiles because they 
 * antigen (in `~/.antigen/antige.sh`)
 * powerline (installed via `pip` and not in user-space)
 
+#### install of ASDF version manager
+
+I've recently moved from RBenv to [ASDF][asdf], a new lightweight version manager that support plugins, which allow you to have a unique version manager for multiple software (Ruby, Nodejs, Elixir, PostgreSQL, etc.).
+
+To use it, just execute `install_asdf.sh` script to download dependencies, install ASDF and add it to your profile shell file.
+
 #### deploy of my dotfiles
 To deploy my dotfiles, just execute the `deploy.sh` script, re-login (or execute `zsh`) and enjoy.
 
@@ -37,3 +43,5 @@ This repository is released under the MIT license. See LICENSE file for more inf
 
 ### author
 This repository is currently maintained by **Óscar de Arriba** (*odarriba at gmail.com*)
+
+[asdf]: https://github.com/asdf-vm/asdf
