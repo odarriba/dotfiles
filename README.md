@@ -35,6 +35,13 @@ To use it, just execute `install_asdf.sh` script to download dependencies, insta
 #### deploy of my dotfiles
 To deploy my dotfiles, just execute the `deploy.sh` script, re-login (or execute `zsh`) and enjoy.
 
+#### aliases included
+
+Some useful aliases included:
+
+  * `be`: as a shortcut of `bundle exec` (for example, `be rails s` instead of `bundle exec rails s`).
+  * `rm_dsstore`: function to remove recursively all the `.DS_Store` files in current folder and subfolders. Useful in external and network units to avoid sending lots of files not useful for non-OSX systems.
+
 ### contribute
 This repository has my dotfiles, but if you find a repo or something to improve, feel free to make a pull request to help me to improve my environment!
 
