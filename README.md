@@ -40,6 +40,8 @@ To deploy my dotfiles, just execute the `deploy.sh` script, re-login (or execute
 Some useful aliases included:
 
   * `be`: as a shortcut of `bundle exec` (for example, `be rails s` instead of `bundle exec rails s`).
+  * `ber`: as a shortcut of `bundle exec take` (for example, `ber db:migrate` instead of `bundle exec rake db:migrate`).
+  * `ms`: as a shortcut of `mix phoenix.server`.
   * `rm_dsstore`: function to remove recursively all the `.DS_Store` files in current folder and subfolders. Useful in external and network units to avoid sending lots of files not useful for non-OSX systems.
 
 ### contribute
