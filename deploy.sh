@@ -14,7 +14,7 @@ git pull origin master;
 rsyncFiles() {
 	echo "[INFO] Syncing configuration...";
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "deploy.sh" --exclude "install_shell.sh" \
-		--exclude "user.sublime-settings" --exclude "atom_config.cson" --exclude "osx_config.sh" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
+		--exclude "user.sublime-settings" --exclude "atom_config.cson" --exclude "osx_config.sh" --exclude “install_asdf.sh” --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 }
 
 

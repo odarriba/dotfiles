@@ -46,3 +46,4 @@ sftp-config.json
 
 ### BUNDLER ###
 .bundle
+.tool-versions*
