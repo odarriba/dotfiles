@@ -43,6 +43,7 @@ Some useful aliases included:
   * `ber`: as a shortcut of `bundle exec take` (for example, `ber db:migrate` instead of `bundle exec rake db:migrate`).
   * `ms`: as a shortcut of `mix phoenix.server`.
   * `rm_dsstore`: function to remove recursively all the `.DS_Store` files in current folder and subfolders. Useful in external and network units to avoid sending lots of files not useful for non-OSX systems.
+  * More... (check `.aliases` file for more aliases)
 
 ### contribute
 This repository has my dotfiles, but if you find a repo or something to improve, feel free to make a pull request to help me to improve my environment!
