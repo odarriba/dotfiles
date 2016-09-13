@@ -48,10 +48,10 @@ installSoftware() {
 	case $SHELL in
 		*/zsh)
 			# assume Zsh
-			echo 'autoload bashcompinit' >> ~/.zprofile
-			echo 'bashcompinit' >> ~/.zprofile
-			echo 'source $HOME/.asdf/asdf.sh' >> ~/.zprofile
-			echo 'source $HOME/.asdf/completions/asdf.bash' >> ~/.zprofile
+			echo 'autoload bashcompinit' >> ~/.zshrc
+			echo 'bashcompinit' >> ~/.zshrc
+			echo 'source $HOME/.asdf/asdf.sh' >> ~/.zshrc
+			echo 'source $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
 			;;
 		*/bash)
 			if [[ $platform == 'linux' ]]; then
