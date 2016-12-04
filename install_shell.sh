@@ -17,7 +17,7 @@ showInfo() {
 
 installSoftware() {
 	# Install zsh and required software
-	echo "[INFO] Installing required software (zsh, git, curl, wget and python-pip)...";
+	echo "[INFO] Installing required software (vim zsh, git, curl, wget, fonts-hack-ttf and python-pip)...";
 	sudo apt-get install -y -qq vim zsh git-core curl wget python-pip fonts-hack-ttf
 
 	# Change the shell to zsh
