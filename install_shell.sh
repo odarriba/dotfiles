@@ -5,47 +5,23 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-echo "Shell installation script for odarriba's dotfiles";
-echo "-------------------------------------------------";
+echo "Linux shell installation script for odarriba's dotfiles";
+echo "-------------------------------------------------------";
 echo "";
-
-platform='undefined'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-	platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-	platform='darwin'
-fi
 
 showInfo() {
 	echo "";
-	if [[ $platform == 'linux' ]]; then
-		echo "[INFO] I've detected that you're running Linux. ";
-		echo "[INFO] I'll update your repository caches and perform the installation of required software.";
-		echo "[WARNING] This script has been thought to run with APT-like distributions.";
-	elif [[ $platform == 'darwin' ]]; then
-		echo "[INFO] I've detected that you're running OSX.";
-		echo "[INFO] I'll install homebrew package manager in order to install the required software.";
-	else
-		echo "[ERROR] Unknown system. Aborting."
-		exit;
-	fi
+	echo "[INFO] I'll update your repository caches and perform the installation of required software.";
+	echo "[WARNING] This script has been thought to run with APT-like distributions.";
 }
 
 installSoftware() {
 	# Install zsh and required software
 	echo "[INFO] Installing required software (zsh, git, curl, wget and python-pip)...";
-	if [[ $platform == 'linux' ]]; then
-		sudo apt-get install -y zsh git-core curl wget python-pip
-	elif [[ $platform == 'darwin' ]]; then
-		brew install zsh git curl wget python vim
-	fi
+	sudo apt-get install -y zsh git-core curl wget python-pip
 
 	# Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
-	if [[ $platform == 'darwin' ]]; then # OSX hack
-		echo $(which zsh) | sudo tee -a /etc/shells
-	fi
 	chsh -s $(which zsh)
 
 	# Install Oh My Zsh!
@@ -70,13 +46,8 @@ installSoftware() {
 
 	# Generating the shell_prompt.sh (first copy the .vimrc)
 	cp .vimrc ~/
-	vim +Helptags +q
- 	vim +"PromptlineSnapshot ~/.shell_prompt.sh powerlineclone" +q
-}
-
-installBrew() {
-	echo "[INFO] Installing Homebrew package manager...";
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+	vim +Helptags +q && \
+	vim +"PromptlineSnapshot ~/.shell_prompt.sh powerlineclone" +q
 }
 
 updateApt() {
@@ -85,19 +56,14 @@ updateApt() {
 }
 
 doIt() {
-	if [[ $platform == 'linux' ]]; then
-		updateApt;
-	elif [[ $platform == 'darwin' ]]; then
-		installBrew;
-	fi
-
+	updateApt;
 	installSoftware;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt;
 else
-	read -p "I'm about to change the configuration files placed in your home directory. Do you want to continue? (y/n) " -n 1;
+	read -p "I'm about to install things and change some of your configuration files. Do you want to continue? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		doIt;
