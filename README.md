@@ -1,19 +1,16 @@
 # odarriba's dotfiles
 
-This repository has several configuration files that I use in my personal computer. They are mine, but you can fork, improve or use them if you like.
+This repository has several configuration files that I use in my personal computer. They are customised for me, but you can fork, improve or use them if you like.
 
-It includes configuration of *zsh*, *oh-my-zsh*, *antigen* and *powerline*. Also, it provides several setup scripts to make an automatic installation of my personal development environment.
+It includes configuration of *zsh*, *oh-my-zsh*, *antigen* and *airline*. Also, it provides several setup scripts to make an automatic installation of my personal development environment.
 
-### usage
+## usage
 In order to use this dotfiles, there is several scripts to make your (and mine) life easier.
 
-#### OSX tweak script
-To clone my OSX configuration (UI/UX, Finder, Dock, Terminal, iTerm, Sublime Text, etc), you can use a script called `osx.sh` that is inspired in the one available in another dotfile repository (https://github.com/mathiasbynens/dotfiles), but with some enhancements and my personal configuration.
+**Important note:** The software in this branch is ready to run in a **Debian Linux** based environment. If you are using OSX, there is an `osx` branch with a compatible version.
 
-Please, read the changes that the script are going to do in order to avoid unwanted changes in your system!
-
-#### installation of required software
-To install the required software, there is a script called `install_shell.sh` that execute the commands required in order to obtain a base system compatible with the dotfiles of this repo.
+### installation of shell software
+To install the shell software, there is a script called `install_shell.sh` that execute commands required to install all the software that I use in my personal environment.
 
 This script is independent of the rest of the repository, and can be called without obtaining all the repository:
 
@@ -24,15 +21,9 @@ This installation process is required in order to use the dotfiles because they 
 * zsh
 * oh-my-zsh
 * antigen (in `~/.antigen/antige.sh`)
-* powerline (installed via `pip` and not in user-space)
+* airline (a `powerline` vim version lighter)
 
-#### install of ASDF version manager
-
-I've recently moved from RBenv to [ASDF][asdf], a new lightweight version manager that support plugins, which allow you to have a unique version manager for multiple software (Ruby, Nodejs, Elixir, PostgreSQL, etc.).
-
-To use it, just execute `install_asdf.sh` script to download dependencies, install ASDF and add it to your profile shell file.
-
-#### deploy of my dotfiles
+### deploy of my dotfiles
 To deploy my dotfiles, just execute the `deploy.sh` script, re-login (or execute `zsh`) and enjoy.
 
 #### aliases included
@@ -44,6 +35,14 @@ Some useful aliases included:
   * `ms`: as a shortcut of `mix phoenix.server`.
   * `rm_dsstore`: function to remove recursively all the `.DS_Store` files in current folder and subfolders. Useful in external and network units to avoid sending lots of files not useful for non-OSX systems.
   * More... (check `.aliases` file for more aliases)
+
+### install of ASDF version manager
+
+I've recently moved from RBenv to [ASDF][asdf], a new lightweight version manager that support plugins, which allow you to have a unique version manager for multiple software (Ruby, Nodejs, Elixir, PostgreSQL, etc.).
+
+To use it, just execute `install_asdf.sh` script to download dependencies, install ASDF and add it to your profile shell file.
+
+**Note:** if you are going to use `zsh`, you must install ASDF when running zsh, so the install script will recognise the shell you are executing to install auto-completion.
 
 ### contribute
 This repository has my dotfiles, but if you find a repo or something to improve, feel free to make a pull request to help me to improve my environment!
