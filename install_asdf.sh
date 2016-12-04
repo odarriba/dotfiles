@@ -25,10 +25,12 @@ installSoftware() {
 			echo 'bashcompinit' >> ~/.zshrc
 			echo 'source $HOME/.asdf/asdf.sh' >> ~/.zshrc
 			echo 'source $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
+			source ~/.zshrc
 			;;
 		*/bash)
 			echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
 			echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+			source ~/.bashrc
 			;;
 	esac
 
