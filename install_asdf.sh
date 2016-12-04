@@ -12,7 +12,7 @@ echo "";
 installSoftware() {
 	# Install zsh and required software
 	echo "[INFO] Installing required software...";
-	sudo apt-get install -y automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev
+	sudo apt-get install -y -qq automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev
 
 	# Clone repository
 	echo "[INFO] Cloning asdf repository...";
