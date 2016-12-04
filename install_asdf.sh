@@ -67,4 +67,5 @@ else
 fi;
 
 echo "";
+echo "[INFO] ASDF plugins isntalled: PHP, NodeJS, Ruby, Erlang and Elixir. Please, if you hace a problem with any of them, visit it's github page to search unmet requeriments or issues.'";
 echo "[INFO] If there isn't any error message, the process is completed. If you want to deploy my configuration files, use deploy.sh script available at my repository.";
