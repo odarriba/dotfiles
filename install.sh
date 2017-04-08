@@ -74,6 +74,32 @@ updateApt() {
 	sudo apt-get update;
 }
 
+installAsdf() {
+	# Clone repository
+	echo "[INFO] Cloning asdf repository...";
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf;
+
+	echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+	echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+	source ~/.bashrc
+
+	# Install useful plugins (at least for me :D)
+	echo "[INFO] Installing asdf plugins...";
+	source $HOME/.asdf/asdf.sh;
+
+	asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git;
+	asdf plugin-add php https://github.com/odarriba/asdf-php.git;
+	asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
+	asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git;
+	asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git;
+}
+
+syncConfig() {
+	echo "[INFO] Syncing configuration...";
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
+	--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
+}
+
 doIt() {
 	if [[ $platform == 'linux' ]]; then
 		updateApt;
@@ -84,6 +110,7 @@ doIt() {
 
 	installSoftware;
 	syncConfig;
+	installAsdf;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
