@@ -51,9 +51,6 @@ installSoftware() {
 	# Install Oh My Zsh!
 	echo "[INFO] Installing Oh My Zsh...";
 	curl -L http://install.ohmyz.sh | sh
-
-	echo "[INFO] Installing Oh My Zsh plugins...";
-	git clone https://github.com/gusaiani/elixir-oh-my-zsh.git ~/.oh-my-zsh/custom/plugins/elixir
 }
 
 installBrew() {

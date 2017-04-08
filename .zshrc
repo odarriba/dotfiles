@@ -5,7 +5,7 @@ ZSH_THEME="odarriba"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(asdf bower brew bundler c common-aliases composer docker docker-compose extract gem git heroku kubectl mix node npm postgres powder rails ruby ssh-agent yarn elixir)
+plugins=(asdf bower brew bundler c common-aliases docker docker-compose extract gem git heroku kubectl mix node npm postgres powder rails ruby ssh-agent yarn elixir)
 
 source $ZSH/oh-my-zsh.sh
 
