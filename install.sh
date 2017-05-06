@@ -124,4 +124,4 @@ else
 fi;
 
 echo "";
-echo "[INFO] If there isn't any error message, the process is completed. If you want to deploy my configuration files, use deploy.sh script available at my repository.";
+echo "[INFO] If there isn't any error message, the process is completed.";
