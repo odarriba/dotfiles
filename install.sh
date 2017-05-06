@@ -38,7 +38,7 @@ installSoftware() {
 	if [[ $platform == 'linux' ]]; then
 		sudo apt-get install -y zsh git-core curl wget python-pip
 	elif [[ $platform == 'darwin' ]]; then
-		brew install zsh git curl wget python vim
+		brew install zsh git curl wget python vim coreutils gpg
 	fi
 
 	# Change the shell to zsh
@@ -90,6 +90,7 @@ installAsdf() {
 	asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git;
 	asdf plugin-add php https://github.com/odarriba/asdf-php.git;
 	asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
+	bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring;
 	asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git;
 	asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git;
 }
