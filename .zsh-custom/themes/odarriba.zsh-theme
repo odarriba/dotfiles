@@ -2,7 +2,6 @@
 WHITE_COLOR=007
 BLUE_COLOR=004
 GREY_COLOR=240
-ELIXIR_COLOR=093
 GIT_DIRTY_COLOR=003
 GIT_CLEAN_COLOR=002
 ERROR_CODE_COLOR=001
@@ -22,15 +21,7 @@ git_custom_status() {
   fi
 }
 
-#Customized git status, oh-my-zsh currently does not allow render dirty status before branch
-elixir_version() {
-  if hash elixir 2>/dev/null; then
-    ELIXIR_VERSION=`elixir -v | sed -n -e 's/^.*Elixir //p'`
-    echo "%{$FG[$ELIXIR_COLOR]%}%{$BG[$ELIXIR_COLOR]$FG[$WHITE_COLOR]%} Elixir $ELIXIR_VERSION "
-  fi
-}
-
 # Combine it all into a final right-side prompt
-RPS1='$EXIT_CODE_PROMPT$(git_custom_status)$(elixir_version)%{$reset_color%}$EPS1'
+RPS1='$EXIT_CODE_PROMPT$(git_custom_status)%{$reset_color%}$EPS1'
 
 PROMPT='%{$BG[$BLUE_COLOR]$FG[$WHITE_COLOR]%} %n %{$BG[$GREY_COLOR]$FG[$BLUE_COLOR]%}%{$FG[$WHITE_COLOR]%} %1~ %{$reset_color$FG[$GREY_COLOR]%}%{$reset_color%} '

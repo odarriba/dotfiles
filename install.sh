@@ -38,7 +38,7 @@ installSoftware() {
 	if [[ $platform == 'linux' ]]; then
 		sudo apt-get install -y zsh git-core curl wget python-pip
 	elif [[ $platform == 'darwin' ]]; then
-		brew install zsh git curl wget python vim coreutils gpg
+		brew install zsh git curl wget python vim coreutils gpg pinentry-mac gnupg
 	fi
 
 	# Change the shell to zsh
@@ -97,8 +97,15 @@ installAsdf() {
 
 syncConfig() {
 	echo "[INFO] Syncing configuration...";
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
+	# Avoid copying gnupg config for OSX on Linux
+	if [[ $platform == 'linux' ]]; then
+		rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
+	--exclude ".gnupg/" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
+	elif [[ $platform == 'darwin' ]]; then
+		rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
 	--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
+	fi
+
 }
 
 doIt() {

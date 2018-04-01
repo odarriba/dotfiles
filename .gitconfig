@@ -1,6 +1,7 @@
 [user]
 	name = Óscar de Arriba
 	email = odarriba@gmail.com
+	signingkey = C568F4997840A0B5
 [merge]
 	ff = false
 [branch]
@@ -9,3 +10,7 @@
 	default = simple
 [core]
 	excludesfile = ~/.gitignore_global
+[url "git@gitlab.airgateway.net:"]
+    insteadOf = https://gitlab.airgateway.net/
+[status]
+	submoduleSummary = true
