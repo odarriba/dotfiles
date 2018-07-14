@@ -1,16 +1,11 @@
 # Depends on the git plugin for work_in_progress()
 WHITE_COLOR=007
-BLUE_COLOR=004
-GREY_COLOR=240
-GIT_DIRTY_COLOR=003
-GIT_CLEAN_COLOR=002
 ERROR_CODE_COLOR=001
 
 ZSH_THEME_GIT_PROMPT_PREFIX="  "
 ZSH_THEME_GIT_PROMPT_SUFFIX=" "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[$GIT_DIRTY_COLOR]%}%{$BG[$GIT_DIRTY_COLOR]$FG[$WHITE_COLOR]%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[$GIT_CLEAN_COLOR]%}%{$BG[$GIT_CLEAN_COLOR]$FG[$WHITE_COLOR]%}"
-
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}%{$bg[yellow]$fg_bold[white]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}%{$bg[green]$fg_bold[white]%}"
 EXIT_CODE_PROMPT="%(?..$FG[$ERROR_CODE_COLOR]$BG[$ERROR_CODE_COLOR]$FG[$WHITE_COLOR] %? )"
 
 #Customized git status, oh-my-zsh currently does not allow render dirty status before branch
@@ -24,4 +19,4 @@ git_custom_status() {
 # Combine it all into a final right-side prompt
 RPS1='$EXIT_CODE_PROMPT$(git_custom_status)%{$reset_color%}$EPS1'
 
-PROMPT='%{$BG[$BLUE_COLOR]$FG[$WHITE_COLOR]%} %n %{$BG[$GREY_COLOR]$FG[$BLUE_COLOR]%}%{$FG[$WHITE_COLOR]%} %1~ %{$reset_color$FG[$GREY_COLOR]%}%{$reset_color%} '
+PROMPT='%{$bg_bold[blue]$fg_bold[white]%} %n %{$reset_color$bg[grey]$fg[blue]%}%{$fg_bold[white]%} %1~ %{$reset_color$fg[grey]%}%{$reset_color%} '
