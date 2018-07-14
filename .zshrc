@@ -25,7 +25,7 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
 fi
 
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/bin:~/.local/bin:$PATH"
 autoload bashcompinit
 bashcompinit
 source $HOME/.asdf/asdf.sh

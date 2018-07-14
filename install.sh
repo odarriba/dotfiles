@@ -24,7 +24,8 @@ installSoftware() {
 	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
 	# Install dev dependencies
-	sudo apt-get install -y autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop
+	sudo apt-get install -y autoconf bison build-essential m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libffi-dev libgdbm5 libgdbm-dev
+
 
 	# Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
