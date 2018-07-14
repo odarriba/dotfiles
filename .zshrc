@@ -20,6 +20,11 @@ export LC_ALL="en_US.UTF-8"
 
 source ~/.aliases
 
+# Tilix VTE fix
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+  source /etc/profile.d/vte.sh
+fi
+
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 autoload bashcompinit
 bashcompinit

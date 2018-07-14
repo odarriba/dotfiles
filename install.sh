@@ -18,7 +18,13 @@ showInfo() {
 installSoftware() {
 	# Install zsh and required software
 	echo "[INFO] Installing required software (zsh, git, curl, wget and python-pip)...";
-	sudo apt-get install -y zsh git-core curl wget python-pip
+	sudo apt-get install -y zsh git-core curl wget python-pip fonts-hack-ttf tilix
+
+	# Tilix VTE fix
+	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+
+	# Install dev dependencies
+	sudo apt-get install -y autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop
 
 	# Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
