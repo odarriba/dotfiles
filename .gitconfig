@@ -10,7 +10,5 @@
 	default = simple
 [core]
 	excludesfile = ~/.gitignore_global
-[url "git@gitlab.airgateway.net:"]
-    insteadOf = https://gitlab.airgateway.net/
 [status]
 	submoduleSummary = true

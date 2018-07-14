@@ -9,64 +9,24 @@ echo "Shell installation script for odarriba's dotfiles";
 echo "-------------------------------------------------";
 echo "";
 
-platform='undefined'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-	platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-	platform='darwin'
-fi
-
 showInfo() {
 	echo "";
-	if [[ $platform == 'linux' ]]; then
-		echo "[INFO] I've detected that you're running Linux. ";
-		echo "[INFO] I'll update your repository caches and perform the installation of required software.";
-		echo "[WARNING] This script has been thought to run with APT-like distributions.";
-	elif [[ $platform == 'darwin' ]]; then
-		echo "[INFO] I've detected that you're running OSX.";
-		echo "[INFO] I'll install homebrew package manager in order to install the required software.";
-	else
-		echo "[ERROR] Unknown system. Aborting."
-		exit;
-	fi
+	echo "[INFO] I'll update your repository caches and perform the installation of required software.";
+	echo "[WARNING] This script has been thought to run with APT-like distributions.";
 }
 
 installSoftware() {
 	# Install zsh and required software
 	echo "[INFO] Installing required software (zsh, git, curl, wget and python-pip)...";
-	if [[ $platform == 'linux' ]]; then
-		sudo apt-get install -y zsh git-core curl wget python-pip
-	elif [[ $platform == 'darwin' ]]; then
-		brew install zsh git curl wget python vim coreutils gpg pinentry-mac gnupg
-	fi
+	sudo apt-get install -y zsh git-core curl wget python-pip
 
 	# Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
-	if [[ $platform == 'darwin' ]]; then # OSX hack
-		echo $(which zsh) | sudo tee -a /etc/shells
-	fi
 	chsh -s $(which zsh)
 
 	# Install Oh My Zsh!
 	echo "[INFO] Installing Oh My Zsh...";
 	curl -L http://install.ohmyz.sh | sh
-}
-
-installBrew() {
-	if hash elixir 2>/dev/null; then
-		echo "[INFO] Brew already installed."
-	else
-		echo "[INFO] Installing Homebrew package manager...";
-		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
-	fi
-}
-
-updateBrew() {
-	if hash elixir 2>/dev/null; then
-		echo "[INFO] Updating Homebrew package manager...";
-		brew update;
-	fi
 }
 
 updateApt() {
@@ -100,24 +60,13 @@ installAsdf() {
 syncConfig() {
 	echo "[INFO] Syncing configuration...";
 	# Avoid copying gnupg config for OSX on Linux
-	if [[ $platform == 'linux' ]]; then
-		rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
 	--exclude ".gnupg/" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
-	elif [[ $platform == 'darwin' ]]; then
-		rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
-	--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
-	fi
 
 }
 
 doIt() {
-	if [[ $platform == 'linux' ]]; then
-		updateApt;
-	elif [[ $platform == 'darwin' ]]; then
-		installBrew;
-		updateBrew;
-	fi
-
+	updateApt;
 	installSoftware;
 	syncConfig;
 	installAsdf;

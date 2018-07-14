@@ -7,7 +7,7 @@ It includes configuration of *zsh*, *oh-my-zsh*, *asdf-vm* and the configuration
 ## usage
 In order to use this dotfiles, there is several scripts to make your (and mine) life easier.
 
-**Important note:** The software in this branch is ready to run in a **OSX** based environment.
+**Important note:** The software in this branch is ready to run in a **Debian** based environment.
 
 ### installation
 To install the shell software, asdf and syncing the configuration, there is a script called `install.sh` that execute commands to do all of these stuff.
@@ -20,7 +20,6 @@ Some useful aliases included:
 
   * `be`: as a shortcut of `bundle exec` (for example, `be rails s` instead of `bundle exec rails s`).
   * `ber`: as a shortcut of `bundle exec take` (for example, `ber db:migrate` instead of `bundle exec rake db:migrate`).
-  * `rm_dsstore`: function to remove recursively all the `.DS_Store` files in current folder and subfolders. Useful in external and network units to avoid sending lots of files not useful for non-OSX systems.
   * More... (check `.aliases` file for more aliases)
 
 ## contribute
