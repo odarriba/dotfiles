@@ -18,7 +18,7 @@ showInfo() {
 installSoftware() {
 	# Install zsh and required software
 	echo "[INFO] Installing required software (zsh, git, curl, wget and python-pip)...";
-	sudo apt-get install -y zsh git-core curl wget python-pip fonts-hack-ttf tilix
+	sudo apt-get install -y zsh git-core curl wget python-pip fonts-hack-ttf tilix xbindkeys xautomation
 
 	# Tilix VTE fix
 	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh

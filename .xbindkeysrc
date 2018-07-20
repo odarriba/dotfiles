@@ -1,0 +1,20 @@
+# thumb wheel up => increase volume
+"xte 'key XF86AudioRaiseVolume'"
+   b:6
+
+# thumb wheel down => lower volume
+"xte 'key XF86AudioLowerVolume'"
+   b:7
+
+# Thumb button => open activities
+"sleep 0.1 && xte 'keydown Alt_L' 'key F1' 'keyup Alt_L'"
+   m:0xc + c:23
+
+# Thumb button up => previous space
+"xte 'keydown Super_L' 'key Page_Up' 'keyup Super_L'"
+   b:9
+
+# Thumb button down => next space
+"xte 'keydown Super_L' 'key Page_Down' 'keyup Super_L'"
+   b:8
+
