@@ -38,7 +38,7 @@ installSoftware() {
 	if [[ $platform == 'linux' ]]; then
 		sudo apt-get install -y zsh git-core curl wget python-pip
 	elif [[ $platform == 'darwin' ]]; then
-		brew install zsh git curl wget python vim coreutils gpg pinentry-mac gnupg
+		brew install zsh git curl wget python vim coreutils gpg pinentry-mac gnupg automake autoconf openssl libyaml readline libxslt libtool unixodbc
 	fi
 
 	# Change the shell to zsh
