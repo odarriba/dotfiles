@@ -9,43 +9,14 @@ echo "Shell installation script for odarriba's dotfiles";
 echo "-------------------------------------------------";
 echo "";
 
-platform='undefined'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-	platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-	platform='darwin'
-fi
-
-showInfo() {
-	echo "";
-	if [[ $platform == 'linux' ]]; then
-		echo "[INFO] I've detected that you're running Linux. ";
-		echo "[INFO] I'll update your repository caches and perform the installation of required software.";
-		echo "[WARNING] This script has been thought to run with APT-like distributions.";
-	elif [[ $platform == 'darwin' ]]; then
-		echo "[INFO] I've detected that you're running OSX.";
-		echo "[INFO] I'll install homebrew package manager in order to install the required software.";
-	else
-		echo "[ERROR] Unknown system. Aborting."
-		exit;
-	fi
-}
-
 installSoftware() {
 	# Install zsh and required software
 	echo "[INFO] Installing required software (zsh, git, curl, wget and python-pip)...";
-	if [[ $platform == 'linux' ]]; then
-		sudo apt-get install -y zsh git-core curl wget python-pip
-	elif [[ $platform == 'darwin' ]]; then
-		brew install zsh git curl wget python vim coreutils gpg pinentry-mac gnupg automake autoconf openssl libyaml readline libxslt libtool unixodbc wxwidgets
-	fi
+	brew install zsh git curl wget python vim coreutils gpg pinentry-mac gnupg automake autoconf openssl libyaml readline libxslt libtool unixodbc wxwidgets
 
 	# Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
-	if [[ $platform == 'darwin' ]]; then # OSX hack
-		echo $(which zsh) | sudo tee -a /etc/shells
-	fi
+	echo $(which zsh) | sudo tee -a /etc/shells
 	chsh -s $(which zsh)
 
 	# Install Oh My Zsh!
@@ -67,11 +38,6 @@ updateBrew() {
 		echo "[INFO] Updating Homebrew package manager...";
 		brew update;
 	fi
-}
-
-updateApt() {
-	echo "[INFO] Updating APT repositories...";
-	sudo apt-get update;
 }
 
 installAsdf() {
@@ -98,25 +64,13 @@ installAsdf() {
 
 syncConfig() {
 	echo "[INFO] Syncing configuration...";
-	# Avoid copying gnupg config for OSX on Linux
-	if [[ $platform == 'linux' ]]; then
-		rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
-	--exclude ".gnupg/" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
-	elif [[ $platform == 'darwin' ]]; then
-		rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
 	--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
-	fi
-
 }
 
 doIt() {
-	if [[ $platform == 'linux' ]]; then
-		updateApt;
-	elif [[ $platform == 'darwin' ]]; then
-		installBrew;
-		updateBrew;
-	fi
-
+	installBrew;
+	updateBrew;
 	installSoftware;
 	syncConfig;
 	installAsdf;
