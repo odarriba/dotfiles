@@ -36,6 +36,10 @@ installAsdf() {
 	echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
 	echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
 	source ~/.bashrc
+	
+	# Install required software for ASDF builds
+	echo "[INFO] Installing required software for ASDF builds...";
+	sudo apt-get install -y git-core curl wget build-essential autoconf unzip libssl-dev libncurses5-dev
 
 	# Install useful plugins (at least for me :D)
 	echo "[INFO] Installing asdf plugins...";
