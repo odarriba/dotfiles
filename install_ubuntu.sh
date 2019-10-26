@@ -39,7 +39,7 @@ installAsdf() {
 
 	# Install required software for ASDF builds
 	echo "[INFO] Installing required software for ASDF builds...";
-	sudo apt-get install -y git-core curl wget build-essential autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev
+	sudo apt-get install -y git-core curl wget build-essential autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev libsqlite3-dev inotify-tools pkg-config
 
 	# Install useful plugins (at least for me :D)
 	echo "[INFO] Installing asdf plugins...";
