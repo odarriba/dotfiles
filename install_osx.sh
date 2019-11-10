@@ -22,6 +22,7 @@ installSoftware() {
 	# Install Oh My Zsh!
 	echo "[INFO] Installing Oh My Zsh...";
 	curl -L http://install.ohmyz.sh | sh
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-custom/plugins/zsh-syntax-highlighting
 }
 
 installBrew() {
@@ -64,8 +65,8 @@ installAsdf() {
 
 syncConfig() {
 	echo "[INFO] Syncing configuration...";
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install.sh" \
-	--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
+	rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" --exclude "install_fedora.sh" \
+	--exclude "install_osx.sh" --exclude "install_ubuntu.sh" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 }
 
 doIt() {
