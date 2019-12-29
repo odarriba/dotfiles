@@ -1,27 +1,30 @@
-# Depends on the git plugin for work_in_progress()
-WHITE_COLOR=007
-BLUE_COLOR=004
-GREY_COLOR=240
-GIT_DIRTY_COLOR=003
-GIT_CLEAN_COLOR=002
-ERROR_CODE_COLOR=001
+local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
-ZSH_THEME_GIT_PROMPT_PREFIX="  "
-ZSH_THEME_GIT_PROMPT_SUFFIX=" "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[$GIT_DIRTY_COLOR]%}%{$BG[$GIT_DIRTY_COLOR]$FG[$WHITE_COLOR]%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[$GIT_CLEAN_COLOR]%}%{$BG[$GIT_CLEAN_COLOR]$FG[$WHITE_COLOR]%}"
+if [[ $UID -eq 0 ]]; then
+    local user_host='%{$terminfo[bold]$fg[red]%}%n@%m %{$reset_color%}'
+    local user_symbol='#'
+else
+    local user_host='%{$terminfo[bold]$fg[green]%}%n@%m %{$reset_color%}'
+    local user_symbol='$'
+fi
 
-EXIT_CODE_PROMPT="%(?..$FG[$ERROR_CODE_COLOR]$BG[$ERROR_CODE_COLOR]$FG[$WHITE_COLOR] %? )"
+local current_dir='%{$terminfo[bold]$fg[blue]%}%~ %{$reset_color%}'
+local git_branch='$(git_custom_status)'
+local clock='%{$fg[white]%}%* '
 
 #Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_custom_status() {
   local cb=$(git_current_branch)
   if [ -n "$cb" ]; then
-    echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(git_current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)‹$(git_current_branch)›$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
 }
 
-# Combine it all into a final right-side prompt
-RPS1='$EXIT_CODE_PROMPT$(git_custom_status)%{$reset_color%}$EPS1'
+PROMPT="╭ ${user_host}${current_dir}${git_branch}${clock}
+╰ %B${user_symbol}%b "
+RPROMPT="%B${return_code}%b"
 
-PROMPT='%{$BG[$BLUE_COLOR]$FG[$WHITE_COLOR]%} %n %{$BG[$GREY_COLOR]$FG[$BLUE_COLOR]%}%{$FG[$WHITE_COLOR]%} %1~ %{$reset_color$FG[$GREY_COLOR]%}%{$reset_color%} '
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
