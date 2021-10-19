@@ -26,16 +26,19 @@ installSoftware() {
 }
 
 installBrew() {
-	if hash elixir 2>/dev/null; then
+	if hash brew 2>/dev/null; then
 		echo "[INFO] Brew already installed."
 	else
 		echo "[INFO] Installing Homebrew package manager...";
 		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+
+		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/odarriba/.zprofile
+		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
 }
 
 updateBrew() {
-	if hash elixir 2>/dev/null; then
+	if hash brew 2>/dev/null; then
 		echo "[INFO] Updating Homebrew package manager...";
 		brew update;
 	fi
