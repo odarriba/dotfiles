@@ -21,7 +21,12 @@ export LC_ALL="en_US.UTF-8"
 source ~/.aliases
 
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+
+# Keep IEx history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 autoload bashcompinit
 bashcompinit
+
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
