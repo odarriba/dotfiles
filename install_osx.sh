@@ -12,7 +12,7 @@ echo "";
 installSoftware() {
 	# Install zsh and required software
 	echo "[INFO] Installing required software (zsh, git, curl, wget and python-pip)...";
-	brew install zsh git curl wget python vim coreutils gpg pinentry-mac gnupg automake autoconf openssl libyaml readline libxslt libtool unixodbc wxwidgets
+	brew install zsh git curl wget python coreutils gpg pinentry-mac gnupg automake autoconf openssl libyaml readline libxslt libtool unixodbc wxwidgets
 
 	# Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
@@ -59,8 +59,6 @@ installAsdf() {
 	bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring;
 	asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git;
 	asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git;
-	asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git;
-	asdf plugin-add packer https://github.com/Banno/asdf-hashicorp.git;
 }
 
 syncConfig() {
