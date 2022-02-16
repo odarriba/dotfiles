@@ -1,2 +1,3 @@
 alias rm_dsstore='find . -name "*.DS_Store" -type f -delete'
 alias gr='git reset --hard origin/$(current_branch)'
+alias dr='doppler run -- "$@"'
