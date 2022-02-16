@@ -1,3 +1,0 @@
-dr () {
-    doppler run -- "$@"
-}
