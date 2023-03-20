@@ -1,7 +1,6 @@
 [user]
 	name = Óscar de Arriba
 	email = oscar@dearriba.es
-	signingkey = C568F4997840A0B5
 [merge]
 	ff = false
 [branch]
