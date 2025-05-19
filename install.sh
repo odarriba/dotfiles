@@ -1,33 +1,30 @@
 #!/usr/bin/env bash
 
-# osx_base.sh — Base OSX installation script
+# install.sh — Installation script for odarriba's dotfiles
 # Created by odarriba (https://github.com/odarriba/dotfiles)
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-echo "Shell installation script for odarriba's dotfiles";
+echo "Installation script for odarriba's dotfiles";
 echo "-------------------------------------------------";
 echo "";
 
 installSoftware() {
   # Install zsh and required software
   echo "[INFO] Installing required software (zsh, git, curl, wget...)";
-  brew install git zsh curl wget coreutils gpg gnupg automake autoconf openssl libyaml readline libxslt
+  brew install git fish curl wget coreutils gpg gnupg automake autoconf openssl rar
 
   # Change the shell to zsh
-  echo "[INFO] Changing the shell of this user to use zsh...";
-  echo $(which zsh) | sudo tee -a /etc/shells
-  chsh -s $(which zsh)
+  echo "[INFO] Changing the shell of this user to use fish...";
+  echo $(which fish) | sudo tee -a /etc/shells
+  chsh -s $(which fish)
 
-  # Install Oh My Zsh!
-  echo "[INFO] Installing Oh My Zsh...";
-  curl -L http://install.ohmyz.sh | sh
-  echo "[INFO] Installing ZSH syntax highlighting...";
-  rm -rf ~/.zsh-custom/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-custom/plugins/zsh-syntax-highlighting
-
-  # Install powerlevel10k
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh-custom/themes/powerlevel10k
+  # Install Fisher
+  echo "[INFO] Installing Fisher...";
+  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+  echo "[INFO] Installing Tide prompt...";
+  fish -c "fisher install IlanCosman/tide@v6"
+  fish -c "tide configure --auto --style=Rainbow --prompt_colors='True color' --show_time='24-hour format' --rainbow_prompt_separators=Angled --powerline_prompt_heads=Sharp --powerline_prompt_tails=Flat --powerline_prompt_style='One line' --prompt_spacing=Compact --icons='Few icons' --transient=No"
 }
 
 installBrew() {
@@ -36,9 +33,6 @@ installBrew() {
   else
     echo "[INFO] Installing Homebrew package manager...";
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";
-
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 }
 
@@ -71,7 +65,7 @@ installAsdf() {
 syncConfig() {
   echo "[INFO] Syncing configuration...";
   rsync --exclude ".git/" --exclude ".DS_Store" --exclude ".gitignore" \
-  --exclude "osx_base.sh" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
+  --exclude "install.sh" --exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 }
 
 doIt() {
