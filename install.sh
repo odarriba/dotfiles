@@ -43,23 +43,13 @@ updateBrew() {
   fi
 }
 
-installAsdf() {
+installMise() {
   # Clone repository
-  echo "[INFO] Cloning asdf repository...";
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf;
+  echo "[INFO] Installing mise...";
+  curl https://mise.run | MISE_QUIET=1 sh
 
-  echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
-  echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
-  source ~/.bashrc
-
-  # Install useful plugins (at least for me :D)
-  echo "[INFO] Installing asdf plugins...";
-  source $HOME/.asdf/asdf.sh;
-
-  asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git;
-  asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
-  asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git;
-  asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git;
+  echo '~/.local/bin/mise activate fish | source' >> ~/.config/fish/config.fish
+  ~/.local/bin/mise completion fish > ~/.config/fish/completions/mise.fish
 }
 
 syncConfig() {
@@ -73,7 +63,7 @@ doIt() {
   updateBrew;
   installSoftware;
   syncConfig;
-  installAsdf;
+  installMise;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
