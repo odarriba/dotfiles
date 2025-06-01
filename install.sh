@@ -14,6 +14,9 @@ installSoftware() {
   echo "[INFO] Installing required software (zsh, git, curl, wget...)";
   brew install git fish curl wget coreutils gpg gnupg automake autoconf openssl rar
 
+  echo "[INFO] Installing required fonts (Cascadia Code, Hack)";
+  brew install --cask font-cascadia-code-pl font-cascadia-mono font-cascadia-mono-pl font-cascadia-code font-hack
+
   # Change the shell to zsh
   echo "[INFO] Changing the shell of this user to use fish...";
   echo $(which fish) | sudo tee -a /etc/shells
