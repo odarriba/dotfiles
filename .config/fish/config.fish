@@ -4,9 +4,6 @@ if status is-interactive
 
     # Keep IEx history
     export ERL_AFLAGS="-kernel shell_history enabled"
-
-    # To use Windsurf CLI command
-    export PATH="/Users/odarriba/.codeium/windsurf/bin/:$PATH"
 end
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
